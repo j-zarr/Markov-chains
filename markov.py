@@ -61,21 +61,38 @@ def make_chains(text_string):
 def make_text(chains):
     """Return text from chains."""
 
+ #initial link(would could) --> link=key --> could
+ #words [would could could]
+ #link (could could) --> keys : box
+ #words [would could could box in]
+#link = (box in) --> keey --> in 
 
     words = []
 
-    link = choice(list(chains.keys()))
-    words.append(link)
+    link = choice(list(chains.keys())) #link match up with dict keys
+  
+    words.append(link[0]) 
+    words.append(link[1])#len(words) = 2
 
-    if len(link <= 2):
-        next_word = choice(chains[link])
-    else:
-        next_key = (words[-1], words[-2])
-        next_word = choice(next_key)
-    
-    print(next_word)
 
-    #return ' '.join(words)
+    #loop through dict until the key is not found
+    while True:
+        if len(words) <= 2:
+            next_word = choice(chains[link])
+            words.append(next_word) #len(words) = 3
+        else:
+            link = (words[-2], words[-1])
+
+            if link not in chains:
+                print("This key does not exist.")
+                break
+
+            next_word = choice(chains[link])
+            words.append(next_word)
+            
+
+
+    return ' '.join(words)
 
 
 input_path = 'green-eggs.txt'
