@@ -80,7 +80,6 @@ def make_text(chains):
 
             next_word = choice(chains[link])
             words.append(next_word)
-    print("hi")
 
     return ' '.join(words)
 
