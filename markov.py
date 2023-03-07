@@ -53,19 +53,11 @@ def make_chains(text_string):
          else:
              chains[chain_keys] = [chain_value] #if key does not exits, create and add value
 
-
-    #print(chains)
     return chains
  
 
 def make_text(chains):
     """Return text from chains."""
-
- #initial link(would could) --> link=key --> could
- #words [would could could]
- #link (could could) --> keys : box
- #words [would could could box in]
-#link = (box in) --> keey --> in 
 
     words = []
 
@@ -84,13 +76,10 @@ def make_text(chains):
             link = (words[-2], words[-1])
 
             if link not in chains:
-                print("This key does not exist.")
                 break
 
             next_word = choice(chains[link])
             words.append(next_word)
-            
-
 
     return ' '.join(words)
 
