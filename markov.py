@@ -61,11 +61,21 @@ def make_chains(text_string):
 def make_text(chains):
     """Return text from chains."""
 
+
     words = []
 
-    # your code goes here
+    link = choice(list(chains.keys()))
+    words.append(link)
 
-    return ' '.join(words)
+    if len(link <= 2):
+        next_word = choice(chains[link])
+    else:
+        next_key = (words[-1], words[-2])
+        next_word = choice(next_key)
+    
+    print(next_word)
+
+    #return ' '.join(words)
 
 
 input_path = 'green-eggs.txt'
